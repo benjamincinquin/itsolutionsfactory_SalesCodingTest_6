@@ -24,7 +24,7 @@ public class TaxServiceImpl implements TaxService {
 		for(Product product : receipt.getProducts()) {
 			if(!basicTax.getBasicTaxExclusion().contains(product.getProductType())) {
 				Float taxAmount = calculTaxAmount(product, basicTax);
-				product.setPrice(product.getPrice()+taxAmount); // Update product price
+				product.setPriceWithTaxes(product.getPriceWithTaxes()+taxAmount); // Update product price
 				receipt.setSalesTaxes(receipt.getSalesTaxes()+taxAmount); // Update Sales Taxes
 				receipt.setTotal(receipt.getTotal()+taxAmount); // Update Total
 			}
@@ -35,6 +35,12 @@ public class TaxServiceImpl implements TaxService {
 
 	@Override
 	public Receipt applyImportedTax(Receipt receipt) {
+		for(Product product : receipt.getProducts()) {
+			Float taxAmount = calculTaxAmount(product, importedTax);
+			product.setPriceWithTaxes(product.getPriceWithTaxes()+taxAmount); // Update product price
+			receipt.setSalesTaxes(receipt.getSalesTaxes()+taxAmount); // Update Sales Taxes
+			receipt.setTotal(receipt.getTotal()+taxAmount); // Update Total
+		}
 		return receipt;
 	}
 	

@@ -10,7 +10,8 @@ import main.packaging.Packaging;
 public abstract class Product {
 
 	private Integer quantity;
-	private Float price;
+	private Float price; // Initial price
+	private Float priceWithTaxes; // Price with taxes
 	private ProductType productType;
 	private Packaging packaging;
 	private Boolean isImported;
@@ -19,6 +20,7 @@ public abstract class Product {
 		super();
 		this.quantity = quantity;
 		this.price = price;
+		this.priceWithTaxes = price;
 		this.productType = productType;
 		this.packaging = packaging;
 		this.isImported = isImported;
@@ -42,6 +44,16 @@ public abstract class Product {
 	}
 	public void setPrice(Float price) {
 		this.price = price;
+	}
+	
+	/**
+	 * Price with taxes
+	 */
+	public Float getPriceWithTaxes() {
+		return priceWithTaxes;
+	}
+	public void setPriceWithTaxes(Float priceWithTaxes) {
+		this.priceWithTaxes = priceWithTaxes;
 	}
 	
 	/**

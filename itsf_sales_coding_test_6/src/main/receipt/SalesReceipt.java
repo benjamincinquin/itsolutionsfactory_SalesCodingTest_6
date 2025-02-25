@@ -18,7 +18,7 @@ public class SalesReceipt extends Receipt {
 			if(product.getIsImported()) receiptPrinting += "imported ";
 			if(product.getPackaging().getPrinted()) receiptPrinting += product.getPackaging().getLabel(product) + " of ";
 			receiptPrinting += product.getLabel() + " : ";
-			receiptPrinting += product.getPrice();
+			receiptPrinting += product.getPriceWithTaxes();
 			receiptPrinting += "\r\n";
 		}
 		return receiptPrinting

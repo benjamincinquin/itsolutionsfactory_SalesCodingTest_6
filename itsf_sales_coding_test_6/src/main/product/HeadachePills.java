@@ -9,7 +9,7 @@ public class HeadachePills extends Product {
 
 	private static final ProductType HEADACHE_PILLS_PRODUCT_TYPE = ProductType.Medical;
 	
-	public HeadachePills(Integer price, Packaging packaging, Boolean isImported) {
+	public HeadachePills(Float price, Packaging packaging, Boolean isImported) {
 		super(price, HEADACHE_PILLS_PRODUCT_TYPE, packaging, isImported);
 	}
 

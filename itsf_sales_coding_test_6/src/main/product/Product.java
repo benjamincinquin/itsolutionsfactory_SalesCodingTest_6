@@ -7,12 +7,12 @@ package main.product;
  */
 public abstract class Product {
 
-	private Integer price;
+	private Float price;
 	private ProductType productType;
 	private Packaging packaging;
 	private Boolean isImported;
 	
-	public Product(Integer price, ProductType productType, Packaging packaging, Boolean isImported) {
+	public Product(Float price, ProductType productType, Packaging packaging, Boolean isImported) {
 		super();
 		this.price = price;
 		this.productType = productType;
@@ -23,10 +23,10 @@ public abstract class Product {
 	/**
 	 * Price 
 	 */
-	public Integer getPrice() {
+	public Float getPrice() {
 		return price;
 	}
-	public void setPrice(Integer price) {
+	public void setPrice(Float price) {
 		this.price = price;
 	}
 	

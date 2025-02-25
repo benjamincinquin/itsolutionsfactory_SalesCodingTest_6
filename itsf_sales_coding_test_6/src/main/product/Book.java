@@ -9,7 +9,7 @@ public class Book extends Product {
 
 	private static final ProductType BOOK_PRODUCT_TYPE = ProductType.Book;
 	
-	public Book(Integer price, Packaging packaging, Boolean isImported) {
+	public Book(Float price, Packaging packaging, Boolean isImported) {
 		super(price, BOOK_PRODUCT_TYPE, packaging, isImported);
 	}
 

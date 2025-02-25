@@ -1,5 +1,8 @@
 package main.app;
 
+import main.product.Book;
+import main.product.Packaging;
+
 /**
  * ITSF Sales Coding Test 6 - Case 1
  * 
@@ -18,6 +21,8 @@ public class ItsfSalesCodingTest6Case1 {
 	 */
 	public static void main(String[] args) {
 		System.out.println("ISTF - SalesCodingTest6 - Case 1");
+		
+		Book book = new Book(12.49f, Packaging.SINGLE, Boolean.FALSE);
 	}
 
 }

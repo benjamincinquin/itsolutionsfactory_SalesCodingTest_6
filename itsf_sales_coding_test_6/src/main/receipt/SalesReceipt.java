@@ -12,7 +12,16 @@ public class SalesReceipt extends Receipt {
 	
 	@Override
 	public String toString() {
-		return "TODO - Products part"
+		String receiptPrinting = "";
+		for(Product product : getProducts()) {
+			receiptPrinting += product.getQuantity() + " ";
+			if(product.getIsImported()) receiptPrinting += "imported ";
+			if(product.getPackaging().getPrinted()) receiptPrinting += product.getPackaging().getLabel(product) + " of ";
+			receiptPrinting += product.getLabel() + " : ";
+			receiptPrinting += product.getPrice();
+			receiptPrinting += "\r\n";
+		}
+		return receiptPrinting
 				+ "Sales Taxes : "+ getSalesTaxes() +"\r\n"
 				+ "Total : "+ getTotal();
 	}

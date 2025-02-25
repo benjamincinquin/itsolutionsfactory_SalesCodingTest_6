@@ -13,6 +13,11 @@ public abstract class Receipt {
 	public Receipt(List<Product> products) {
 		super();
 		this.products = products;
+		this.salesTaxes = 0f;
+		this.total = 0f;
+		for(Product product : products) {
+			this.total += product.getQuantity()*product.getPrice();
+		}
 	}
 	/**
 	 * Products

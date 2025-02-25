@@ -1,5 +1,7 @@
 package main.product;
 
+import main.packaging.Packaging;
+
 /**
  * Product - Abstract class for all products
  *  
@@ -7,17 +9,29 @@ package main.product;
  */
 public abstract class Product {
 
+	private Integer quantity;
 	private Float price;
 	private ProductType productType;
 	private Packaging packaging;
 	private Boolean isImported;
 	
-	public Product(Float price, ProductType productType, Packaging packaging, Boolean isImported) {
+	public Product(Integer quantity, Float price, ProductType productType, Packaging packaging, Boolean isImported) {
 		super();
+		this.quantity = quantity;
 		this.price = price;
 		this.productType = productType;
 		this.packaging = packaging;
 		this.isImported = isImported;
+	}
+	
+	/**
+	 * Quantity 
+	 */
+	public Integer getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
 	}
 	
 	/**
@@ -58,6 +72,17 @@ public abstract class Product {
 	}
 	public void setIsImported(Boolean isImported) {
 		this.isImported = isImported;
+	}
+	
+	/**
+	 * Label
+	 */
+	public String getLabel() {
+		return (printPlural() ? "products" : "product");
+	}
+	
+	protected Boolean printPlural() {
+		return ((getQuantity() > 1 && !getPackaging().getPrinted()) || getPackaging().getProductPlural());
 	}
 	
 	@Override

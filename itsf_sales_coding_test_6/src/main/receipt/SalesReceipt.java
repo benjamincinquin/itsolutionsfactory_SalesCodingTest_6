@@ -1,5 +1,7 @@
 package main.receipt;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.List;
 
 import main.product.Product;
@@ -18,12 +20,12 @@ public class SalesReceipt extends Receipt {
 			if(product.getIsImported()) receiptPrinting += "imported ";
 			if(product.getPackaging().getPrinted()) receiptPrinting += product.getPackaging().getLabel(product) + " of ";
 			receiptPrinting += product.getLabel() + " : ";
-			receiptPrinting += product.getPriceWithTaxes();
+			receiptPrinting += new BigDecimal(product.getPriceWithTaxes()).round(MathContext.DECIMAL32).floatValue(); // Use BigDecimal to prevent high precision
 			receiptPrinting += "\r\n";
 		}
 		return receiptPrinting
-				+ "Sales Taxes : "+ getSalesTaxes() +"\r\n"
-				+ "Total : "+ getTotal();
+				+ "Sales Taxes : "+ new BigDecimal(getSalesTaxes()).round(MathContext.DECIMAL32).floatValue() +"\r\n" // Use BigDecimal to prevent high precision
+				+ "Total : "+ new BigDecimal(getTotal()).round(MathContext.DECIMAL32).floatValue(); // Use BigDecimal to prevent high precision
 	}
 	
 	
